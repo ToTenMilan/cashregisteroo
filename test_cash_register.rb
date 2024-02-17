@@ -181,10 +181,10 @@ describe CashRegister do
     cash_register = CashRegister.new(products)
     expected_result = {
       products: [
-        { name: 'imported bottle of perfume', price: 32.19 },
-        { name: 'bottle of perfume', price: 20.89 },
-        { name: 'packet of headache pills', price: 9.75 },
-        { name: 'imported box of chocolates', price: 35.40 }
+        { name: 'imported bottle of perfume', price: 32.19, amount: 1 },
+        { name: 'bottle of perfume', price: 20.89, amount: 1 },
+        { name: 'packet of headache pills', price: 9.75, amount: 1 },
+        { name: 'imported box of chocolates', price: 35.40, amount: 3 }
       ],
       sales_taxes: 7.75,
       total: 98.23

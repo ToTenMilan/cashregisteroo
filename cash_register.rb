@@ -65,7 +65,8 @@ class CashRegister
     @products.group_by(&:name).map do |name, products|
       {
         name: name,
-        price: products.map(&:price_with_taxes).reduce(:+).round(2)
+        price: products.map(&:price_with_taxes).reduce(:+).round(2),
+        amount: products.size
       }
     end
 
