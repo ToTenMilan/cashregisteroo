@@ -38,5 +38,12 @@ describe CashRegister do
     assert_equal cash_register.sales_tax, 0.5
   end
 
-
+  it 'calculates total for multiple imported products' do
+    products = [
+      Product.new( 'imported box of chocolates', true, 'food', 10.00 ),
+      Product.new( 'imported bottle of perfume', true, 'other', 47.50 )
+    ]
+    cash_register = CashRegister.new(products)
+    assert_equal cash_register.sales_tax, 7.65
+  end
 end
