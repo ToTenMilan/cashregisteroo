@@ -20,6 +20,8 @@
 # CashRegister
 # products
 
+require_relative 'product'
+
 class CashRegister
   def initialize(products)
     @products = products
@@ -31,7 +33,7 @@ class CashRegister
   end
 
   def total
-    @products.map { |product| product[:price] * product[:amount] }.reduce(:+)
+    @products.map(&:price).reduce(:+).ceil(2)
   end
 
 end

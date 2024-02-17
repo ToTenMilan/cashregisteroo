@@ -1,26 +1,46 @@
 require 'minitest/autorun'
 require_relative 'cash_register'
+require_relative 'product'
 
 describe CashRegister do
   it 'returns products and all the data' do
     products = [
-      { name: 'book', imported: false, category: 'book', price: 12.49 },
-      { name: 'book', imported: false, category: 'book', price: 12.49 },
-      { name: 'music cd', imported: false, category: 'other', price: 14.99 },
-      { name: 'chocolate bar', imported: false, category: 'food', price: 0.85 }
+      Product.new( 'book', false, 'book', 12.49 ),
+      Product.new( 'book', false, 'book', 12.49 ),
+      Product.new( 'music cd', false, 'other', 14.99 ),
+      Product.new( 'chocolate bar', false, 'food', 0.85 )
     ]
     cash_register = CashRegister.new(products)
     assert_equal cash_register.products, products
   end
 
-  it 'calculate total for single product with sales tax' do
-    skip
+  it 'calculate total for single product' do
 
     products = [
-      { name: 'book', imported: false, category: 'book', price: 12.49 }
+      Product.new( 'book', false, 'book', 12.49 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.total, 13.12 # 12.49 + 0.63
+    assert_equal cash_register.total, 12.49
+  end
+
+  it 'calculate total for multiple products' do
+    products = [
+      Product.new( 'book', false, 'book', 12.49 ),
+      Product.new( 'music cd', false, 'other', 14.99 ),
+      Product.new( 'chocolate bar', false, 'food', 0.85 )
+    ]
+    cash_register = CashRegister.new(products)
+    assert_equal cash_register.total, 28.33
+  end
+
+  it 'calculate total for two the same products and one different' do
+    products = [
+      Product.new( 'book', false, 'book', 12.49 ),
+      Product.new( 'book', false, 'book', 12.49 ),
+      Product.new( 'music cd', false, 'other', 14.99 )
+    ]
+    cash_register = CashRegister.new(products)
+    assert_equal cash_register.total, 39.97
   end
 
 
