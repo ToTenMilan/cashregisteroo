@@ -1,7 +1,7 @@
 ### 1. Clone the repo
 
 ```sh
-git clone ...
+git clone https://github.com/ToTenMilan/cashregisteroo.git
 ```
 
 ### 2. Test
