@@ -7,4 +7,17 @@ class Product
     @category = category
     @price = price
   end
+
+  def price_with_sales_tax
+    price + sales_tax
+  end
+
+  def sales_tax
+    return 0 if tax_exempt?
+    (price * 0.10).ceil(2)
+  end
+
+  def tax_exempt?
+    ['book', 'food', 'medical'].include?(category)
+  end
 end
