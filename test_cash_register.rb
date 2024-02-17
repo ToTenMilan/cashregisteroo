@@ -12,5 +12,11 @@ describe CashRegister do
     assert_equal cash_register.products products
   end
 
-
+  it 'calculate total for single product' do
+    products = [
+      { name: 'book', imported: false, category: 'book', price: 12.49, amount: 2 }
+    ]
+    cash_register = CashRegister.new(products)
+    assert_equal cash_register.total, 24.98
+  end
 end

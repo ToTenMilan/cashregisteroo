@@ -30,4 +30,8 @@ class CashRegister
     @products
   end
 
+  def total
+    @products.map { |product| product[:price] * product[:amount] }.reduce(:+)
+  end
+
 end
