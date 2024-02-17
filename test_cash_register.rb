@@ -9,7 +9,7 @@ describe CashRegister do
       { name: 'chocolate bar', imported: false, category: 'food', price: 0.85, amount: 1 }
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.products products
+    assert_equal cash_register.products, products
   end
 
   it 'calculate total for single product' do
