@@ -36,4 +36,8 @@ class CashRegister
     @products.map(&:price).reduce(:+).ceil(2)
   end
 
+  def sales_tax
+    @products.map(&:sales_tax).reduce(:+).ceil(2)
+  end
+
 end
