@@ -1,10 +1,14 @@
-### 1. Clone the repo
+### Time
+
+Done in 4 hours and few minutes (see commits)
+
+### Clone the repo
 
 ```sh
 git clone https://github.com/ToTenMilan/cashregisteroo.git
 ```
 
-### 2. Test
+### Test
 
 ##### Automatic
 
