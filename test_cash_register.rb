@@ -11,7 +11,7 @@ describe CashRegister do
       Product.new( 'chocolate bar', false, 'food', 0.85 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.products, products
+    assert_equal products, cash_register.products
   end
 
   it 'calculate total for single non-exempt sales tax product' do
@@ -19,7 +19,7 @@ describe CashRegister do
       Product.new( 'music cd', false, 'other', 14.99 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.sales_tax, 1.499
+    assert_equal 1.499, cash_register.sales_tax
   end
 
   it 'calcaultes total for single exempt sales tax product' do
@@ -27,7 +27,7 @@ describe CashRegister do
       Product.new( 'book', false, 'book', 12.49 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.sales_tax, 0
+    assert_equal 0, cash_register.sales_tax
   end
 
   it 'calculates total for single imported product' do
@@ -35,7 +35,7 @@ describe CashRegister do
       Product.new( 'imported box of chocolates', true, 'food', 10.00 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.import_tax, 0.5
+    assert_equal 0.5, cash_register.import_tax
   end
 
   it 'calculates total for multiple imported products' do
@@ -52,7 +52,7 @@ describe CashRegister do
       Product.new( 'imported bottle of perfume', true, 'other', 47.50 )
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.total_tax, 7.125
+    assert_equal 7.13, cash_register.total_tax
   end
 
   describe 'acceptance tests' do
@@ -74,7 +74,7 @@ describe CashRegister do
         Product.new( 'chocolate bar', false, 'food', 0.85 )
       ]
       cash_register = CashRegister.new(products)
-      assert_equal cash_register.total_with_tax, 42.32
+      assert_equal 42.32, cash_register.total_with_tax
     end
 
     it 'calculates total tax for input 1' do
@@ -85,8 +85,34 @@ describe CashRegister do
         Product.new( 'chocolate bar', false, 'food', 0.85 )
       ]
       cash_register = CashRegister.new(products)
-      assert_equal cash_register.total_tax, 1.499
+      assert_equal 1.5, cash_register.total_tax
     end
+
+    # Input 2:
+    # 1 imported box of chocolates at 10.00
+    # 1 imported bottle of perfume at 47.50
+    # Output 2:
+    # 1 imported box of chocolates: 10.50
+    # 1 imported bottle of perfume: 54.65
+    # Sales Taxes: 7.65
+    # Total: 65.15
+    # it 'calculates total for input 2' do
+    #   products = [
+    #     Product.new( 'imported box of chocolates', true, 'food', 10.00 ),
+    #     Product.new( 'imported bottle of perfume', true, 'other', 47.50 )
+    #   ]
+    #   cash_register = CashRegister.new(products)
+    #   assert_equal cash_register.total_with_tax, 65.15
+    # end
+
+    # it 'calculates total tax for input 2' do
+    #   products = [
+    #     Product.new( 'imported box of chocolates', true, 'food', 10.00 ),
+    #     Product.new( 'imported bottle of perfume', true, 'other', 47.50 )
+    #   ]
+    #   cash_register = CashRegister.new(products)
+    #   assert_equal cash_register.total_tax, 7.125
+    # end
 
   end
 end

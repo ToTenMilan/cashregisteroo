@@ -12,22 +12,22 @@ describe Product do
 
   it 'returns sales tax for non-exempt product' do
     product = Product.new('music cd', false, 'other', 14.99)
-    assert_equal product.sales_tax, 1.499
+    assert_equal 1.499, product.sales_tax
   end
 
 
   it 'returns 0 tax for exempt product' do
     product = Product.new('book', false, 'book', 12.49)
-    assert_equal product.sales_tax, 0
+    assert_equal 0, product.sales_tax
   end
 
   it 'returns import tax for imported product' do
     product = Product.new('imported box of chocolates', true, 'food', 10.00)
-    assert_equal product.import_tax, 0.5
+    assert_equal 0.5, product.import_tax
   end
 
   it 'returns 0 import tax for non-imported product' do
     product = Product.new('book', false, 'book', 12.49)
-    assert_equal product.import_tax, 0
+    assert_equal 0, product.import_tax
   end
 end
