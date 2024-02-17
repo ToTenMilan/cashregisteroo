@@ -138,14 +138,7 @@ describe CashRegister do
         Product.new( 'imported box of chocolates', true, 'food', 11.25 )
       ]
       cash_register = CashRegister.new(products)
-
-      # Sorry guys but your rounding to 0.05 is inaccurate (I read carefully the problem statement)
-      # According to your outputs, import tax for "imp. chocolates" should be 0.60, but it's 0.55
-      # > 11.25 * 0.05
-      # => 0.5625
-      # ((11.25 * 0.05) * 20).round / 20.0
-      # => 0.55
-      assert_equal 98.23, cash_register.total_with_tax
+      assert_equal 98.38, cash_register.total_with_tax
     end
 
     it 'calculates total sales tax for input 3' do
@@ -158,14 +151,7 @@ describe CashRegister do
         Product.new( 'imported box of chocolates', true, 'food', 11.25 )
       ]
       cash_register = CashRegister.new(products)
-
-      # Sorry guys but your rounding to 0.05 is inaccurate (I read carefully the problem statement)
-      # According to your outputs, import tax for "imp. chocolates" should be 0.60, but it's 0.55
-      # > 11.25 * 0.05
-      # => 0.5625
-      # ((11.25 * 0.05) * 20).round / 20.0
-      # => 0.55
-      assert_equal 7.75, cash_register.total_tax
+      assert_equal 7.90, cash_register.total_tax
     end
   end
 
@@ -184,10 +170,10 @@ describe CashRegister do
         { name: 'imported bottle of perfume', price: 32.19, amount: 1 },
         { name: 'bottle of perfume', price: 20.89, amount: 1 },
         { name: 'packet of headache pills', price: 9.75, amount: 1 },
-        { name: 'imported box of chocolates', price: 35.40, amount: 3 }
+        { name: 'imported box of chocolates', price: 35.55, amount: 3 }
       ],
-      sales_taxes: 7.75,
-      total: 98.23
+      sales_taxes: 7.90,
+      total: 98.38
     }
     assert_equal expected_result, cash_register.result
   end

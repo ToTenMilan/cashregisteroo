@@ -20,13 +20,13 @@ class Product
   def sales_tax
     return 0 if tax_exempt?
     raw_tax = (10 * @price) / 100.0
-    res = (raw_tax * 20).round / 20.0
+    res = (raw_tax * 20).ceil / 20.0
   end
 
   def import_tax
     return 0 unless imported
     raw_tax = (5 * @price) / 100.0
-    res = (raw_tax * 20).round / 20.0
+    res = (raw_tax * 20).ceil / 20.0
   end
 
   def tax_exempt?
