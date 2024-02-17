@@ -31,11 +31,7 @@ class CashRegister
   end
 
   def total
-    total = 0
-    @products.each do |product|
-      total += product[:price]
-    end
-    total
+    @products.map { |product| product[:price] * product[:amount] }.reduce(:+)
   end
 
 end

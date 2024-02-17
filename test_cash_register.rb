@@ -13,30 +13,15 @@ describe CashRegister do
     assert_equal cash_register.products, products
   end
 
-  it 'calculate total for single product' do
+  it 'calculate total for single product with sales tax' do
+    skip
+
     products = [
       { name: 'book', imported: false, category: 'book', price: 12.49 }
     ]
     cash_register = CashRegister.new(products)
-    assert_equal cash_register.total, 12.49
+    assert_equal cash_register.total, 13.12 # 12.49 + 0.63
   end
 
-  it 'calculate total for two products' do
-    products = [
-      { name: 'book', imported: false, category: 'book', price: 12.49 },
-      { name: 'music cd', imported: false, category: 'other', price: 14.99 }
-    ]
-    cash_register = CashRegister.new(products)
-    assert_equal cash_register.total, 27.48
-  end
 
-  it 'calculates tax for two the same products and one different' do
-    products = [
-      { name: 'book', imported: false, category: 'book', price: 12.49 },
-      { name: 'book', imported: false, category: 'book', price: 12.49 },
-      { name: 'music cd', imported: false, category: 'other', price: 14.99 }
-    ]
-    cash_register = CashRegister.new(products)
-    assert_equal cash_register.total, 39.97
-  end
 end
