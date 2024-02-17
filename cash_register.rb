@@ -44,7 +44,7 @@ class CashRegister
   end
 
   def total_tax
-    sales_tax + import_tax
+    (sales_tax + import_tax).round(2)
   end
 
   def total_with_tax
