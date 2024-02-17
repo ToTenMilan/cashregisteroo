@@ -19,17 +19,23 @@ class Product
 
   def sales_tax
     return 0 if tax_exempt?
-    raw_tax = (10 * @price) / 100.0
-    res = (raw_tax * 20).ceil / 20.0
+    calculate_tax_and_round(10)
   end
 
   def import_tax
     return 0 unless imported
-    raw_tax = (5 * @price) / 100.0
-    res = (raw_tax * 20).ceil / 20.0
+    calculate_tax_and_round(5)
   end
+
+  private
 
   def tax_exempt?
     ['book', 'food', 'medical'].include?(category)
+  end
+
+  def calculate_tax_and_round(tax_rate)
+    # round up to the nearest 0.05
+    raw_tax = (tax_rate * @price) / 100.0
+    (raw_tax * 20).ceil / 20.0
   end
 end
