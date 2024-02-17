@@ -168,4 +168,27 @@ describe CashRegister do
       assert_equal 7.75, cash_register.total_tax
     end
   end
+
+  it 'returns the result of input 3' do
+    products = [
+      Product.new( 'imported bottle of perfume', true, 'other', 27.99 ),
+      Product.new( 'bottle of perfume', false, 'other', 18.99 ),
+      Product.new( 'packet of headache pills', false, 'medical', 9.75 ),
+      Product.new( 'imported box of chocolates', true, 'food', 11.25 ),
+      Product.new( 'imported box of chocolates', true, 'food', 11.25 ),
+      Product.new( 'imported box of chocolates', true, 'food', 11.25 )
+    ]
+    cash_register = CashRegister.new(products)
+    expected_result = {
+      products: [
+        { name: 'imported bottle of perfume', price: 32.19 },
+        { name: 'bottle of perfume', price: 20.89 },
+        { name: 'packet of headache pills', price: 9.75 },
+        { name: 'imported box of chocolates', price: 35.40 }
+      ],
+      sales_taxes: 7.75,
+      total: 98.23
+    }
+    assert_equal expected_result, cash_register.result
+  end
 end

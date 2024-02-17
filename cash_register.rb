@@ -50,4 +50,24 @@ class CashRegister
   def total_with_tax
     (total + total_tax).round(2)
   end
+
+  def result
+    {
+      products: map_products,
+      sales_taxes: total_tax,
+      total: total_with_tax
+    }
+  end
+
+  private
+
+  def map_products
+    @products.group_by(&:name).map do |name, products|
+      {
+        name: name,
+        price: products.map(&:price_with_taxes).reduce(:+).round(2)
+      }
+    end
+
+  end
 end
