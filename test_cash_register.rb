@@ -19,4 +19,13 @@ describe CashRegister do
     cash_register = CashRegister.new(products)
     assert_equal cash_register.total, 24.98
   end
+
+  it 'calculate total for two products' do
+    products = [
+      { name: 'book', imported: false, category: 'book', price: 12.49, amount: 2 },
+      { name: 'music cd', imported: false, category: 'other', price: 14.99, amount: 1 }
+    ]
+    cash_register = CashRegister.new(products)
+    assert_equal cash_register.total, 39.97
+  end
 end
