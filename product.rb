@@ -1,5 +1,5 @@
 class Product
-  attr_reader :name, :imported, :category, :price
+
 
   def initialize(name, imported, category, price)
     @name = name
@@ -17,7 +17,16 @@ class Product
     (price * 0.10).ceil(2)
   end
 
+  def import_tax
+    return 0 unless imported
+    (price * 0.05).ceil(2)
+  end
+
   def tax_exempt?
     ['book', 'food', 'medical'].include?(category)
   end
+
+  private
+
+  attr_reader :name, :imported, :category, :price
 end

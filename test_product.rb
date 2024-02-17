@@ -20,4 +20,14 @@ describe Product do
     product = Product.new('book', false, 'book', 12.49)
     assert_equal product.sales_tax, 0
   end
+
+  it 'returns import tax for imported product' do
+    product = Product.new('imported box of chocolates', true, 'food', 10.00)
+    assert_equal product.import_tax, 0.5
+  end
+
+  it 'returns 0 import tax for non-imported product' do
+    product = Product.new('book', false, 'book', 12.49)
+    assert_equal product.import_tax, 0
+  end
 end
