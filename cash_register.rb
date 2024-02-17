@@ -25,7 +25,6 @@ require_relative 'product'
 class CashRegister
   def initialize(products)
     @products = products
-
   end
 
   def products
@@ -40,4 +39,7 @@ class CashRegister
     @products.map(&:sales_tax).reduce(:+).ceil(2)
   end
 
+  def import_tax
+    @products.map(&:import_tax).reduce(:+).ceil(2)
+  end
 end
