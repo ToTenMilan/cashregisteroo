@@ -1,3 +1,8 @@
+require 'pry'
+require 'pry-byebug'
+require 'byebug'
+require 'pry-nav'
+
 class Product
   attr_reader :name, :imported, :category, :price
 
@@ -9,17 +14,23 @@ class Product
   end
 
   def price_with_sales_tax
-    price + sales_tax
+    (price + sales_tax).round(2)
+  end
+
+  def price_with_taxes
+    (price + sales_tax + import_tax).round(2)
   end
 
   def sales_tax
     return 0 if tax_exempt?
-    (price * 0.10)
+    raw_tax = (10 * @price) / 100.0
+    (raw_tax * 20).round / 20.0
   end
 
   def import_tax
     return 0 unless imported
-    (price * 0.05)
+    raw_tax = (5 * @price) / 100.0
+    (raw_tax * 20).round / 20.0
   end
 
   def tax_exempt?
