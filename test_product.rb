@@ -12,7 +12,7 @@ describe Product do
 
   it 'returns sales tax for non-exempt product' do
     product = Product.new('music cd', false, 'other', 14.99)
-    assert_equal product.sales_tax, 1.5
+    assert_equal product.sales_tax, 1.499
   end
 
 

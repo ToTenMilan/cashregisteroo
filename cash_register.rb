@@ -32,14 +32,22 @@ class CashRegister
   end
 
   def total
-    @products.map(&:price).reduce(:+).ceil(2)
+    @products.map(&:price).reduce(:+)
   end
 
   def sales_tax
-    @products.map(&:sales_tax).reduce(:+).ceil(2)
+    @products.map(&:sales_tax).reduce(:+)
   end
 
   def import_tax
-    @products.map(&:import_tax).reduce(:+).ceil(2)
+    @products.map(&:import_tax).reduce(:+)
+  end
+
+  def total_tax
+    sales_tax + import_tax
+  end
+
+  def total_with_tax
+    (total + total_tax).ceil(2)
   end
 end

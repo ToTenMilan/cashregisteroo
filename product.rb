@@ -14,12 +14,12 @@ class Product
 
   def sales_tax
     return 0 if tax_exempt?
-    (price * 0.10).ceil(2)
+    (price * 0.10)
   end
 
   def import_tax
     return 0 unless imported
-    (price * 0.05).ceil(2)
+    (price * 0.05)
   end
 
   def tax_exempt?
